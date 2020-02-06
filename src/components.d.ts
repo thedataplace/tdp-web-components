@@ -8,7 +8,7 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  TDPCKANListingType,
+  TdpCkanListingType,
 } from './components/tdp-ckan-listing/tdp-ckan-listing';
 
 export namespace Components {
@@ -26,7 +26,7 @@ export namespace Components {
     /**
     * The compatible listing type
     */
-    'type': TDPCKANListingType;
+    'type': TdpCkanListingType;
   }
 }
 
@@ -76,7 +76,7 @@ declare namespace LocalJSX {
     /**
     * The compatible listing type
     */
-    'type'?: TDPCKANListingType;
+    'type'?: TdpCkanListingType;
   }
 
   interface IntrinsicElements {

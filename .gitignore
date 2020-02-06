@@ -19,8 +19,11 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
+.storybook-compiled
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+src/components.d.ts

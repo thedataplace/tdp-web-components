@@ -18,12 +18,18 @@ export class TdpCkanDataset {
 
   private _client: CKAN;
 
+  // Lifecycle
+  //
+
   componentDidLoad() {
     TDPManager
       .instance()
       .getClient()
       .then(client => this._client = client);
   }
+
+  // Watchers
+  //
 
   @Watch('datasetId')
   protected async onDatasetIdChange() {
@@ -36,6 +42,9 @@ export class TdpCkanDataset {
       this.datasetId = undefined;
     }
   }
+
+  // Rendering
+  //
 
   private title() {
     return (

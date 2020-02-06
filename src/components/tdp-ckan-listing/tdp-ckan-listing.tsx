@@ -3,7 +3,7 @@ import { TDPManager } from '../../config/tdp';
 import { CKANAction } from '../../api/ckan.model';
 import { CKAN } from '../../api/ckan.service';
 
-export type TDPCKANListingType =
+export type TdpCkanListingType =
   'package' | 'organization' | 'group'
   ;
 
@@ -12,10 +12,10 @@ export type TDPCKANListingType =
   styleUrl: 'tdp-ckan-listing.scss',
   shadow: true
 })
-export class TDPCKANListing {
+export class TdpCkanListing {
 
   /** The compatible listing type */
-  @Prop() type: TDPCKANListingType;
+  @Prop() type: TdpCkanListingType;
 
   /** Emitted when a user selects a new item from the list */
   @Event({ bubbles: true }) public itemSelected: EventEmitter;
@@ -23,6 +23,9 @@ export class TDPCKANListing {
   @State() private items = [];
 
   private _client: CKAN;
+
+  // Lifecycle
+  //
 
   componentDidLoad() {
     TDPManager
@@ -33,7 +36,10 @@ export class TDPCKANListing {
       });
   }
 
-  protected async update() {
+  //  Internal
+  //
+
+  private async update() {
     const action = `${this.type}_list` as CKANAction;
 
     try {
@@ -50,9 +56,26 @@ export class TDPCKANListing {
     this.itemSelected.emit(event);
   }
 
+  // Rendering
+  //
+
+  private defaultHeader() {
+    switch (this.type) {
+      case 'group':
+        return 'Groups';
+      case 'organization':
+        return 'Organisations';
+      case 'package':
+        return 'Datasets';
+    }
+  }
+
   render() {
     return (
       <div>
+        <slot name="header">
+          <h1>{this.defaultHeader()}</h1>
+        </slot>
         <ul>
           {
             this.items.map(item =>

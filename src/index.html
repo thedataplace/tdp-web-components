@@ -4,43 +4,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>The Data Place - Web Components Library</title>
+  <title>The Data Place - CKAN Web Components Library</title>
 
-  <script type="module" src="/build/tdp-web-components.esm.js"></script>
-  <script nomodule src="/build/tdp-web-components.js"></script>
-
-  <style>
-    html,
-    body {
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-
-    .tdp--container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      height: 100%;
-      align-items: stretch;
-    }
-
-    section {
-      flex-grow: 1;
-      overflow-y: scroll;
-      max-width: 50vw;
-    }
-
-  </style>
+  <script type="module" src="/build/tdp-ckan-web-components.esm.js"></script>
+  <script nomodule src="/build/tdp-ckan-web-components.js"></script>
+  <link rel="stylesheet" type="text/css" href="build/tdp-ckan-web-components.css" />
 </head>
 
-<body>
+<body class="antialiased">
   <tdp-ckan-connector site="https://plymouth.thedata.place/" apiKey="">
   </tdp-ckan-connector>
 
   <div class="tdp--container">
     <section>
-      <h1>Datasets</h1>
       <tdp-ckan-listing type="package"></tdp-ckan-listing>
     </section>
 

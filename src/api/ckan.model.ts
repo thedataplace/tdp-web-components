@@ -96,8 +96,8 @@ export interface ICKANDataset {
   maintainer_email: string;
   num_tags: number;
   id: string;
-  metadata_created: Date;
-  metadata_modified: Date;
+  metadata_created: string;
+  metadata_modified: string;
   author: string;
   author_email: string;
   state: string;

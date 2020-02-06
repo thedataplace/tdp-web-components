@@ -2,12 +2,7 @@ import { ICKANResponse, CKANAction } from './ckan.model';
 
 export class CKAN {
 
-  constructor(
-    public readonly baseUrl: string,
-    public readonly apiKey?: string
-  ) {
-
-  }
+  constructor(private _baseUrl: string) { }
 
   // Public
   //
@@ -18,6 +13,15 @@ export class CKAN {
 
   public async ping() {
     return this.request('site_read');
+  }
+
+  public set baseUrl(value: string) {
+    // TODO: Url validation
+    this._baseUrl = value;
+  }
+
+  public get baseUrl(): string {
+    return this._baseUrl;
   }
 
   public get apiUrl(): string {
@@ -36,14 +40,15 @@ export class CKAN {
 
   private async request(url: string, params: any = undefined, method: 'GET' = 'GET'): Promise<ICKANResponse> {
     if (!this.baseUrl) {
-      throw new Error('CKANError: no baseUrl set!');
+      this.onError({
+        status: -1,
+        statusText: 'CKANError: no baseUrl set!'
+      });
     }
 
     const headers = new Headers();
 
-    if (!!this.apiKey) {
-      headers.append('X-CKAN-API-Key', this.apiKey);
-    }
+    // TODO: Add any headers
 
     const options = {
       method,
@@ -68,7 +73,7 @@ export class CKAN {
     return response.json();
   }
 
-  private onError(response: Response) {
+  private onError(response: any) {
     throw new Error(`CKAN Error: ${response.status}, ${response.statusText}`);
   }
 }

@@ -13,7 +13,9 @@ import {
 
 export namespace Components {
   interface TdpCkanConnector {
-    'apiKey': string;
+    /**
+    * the url to the CKAN site
+    */
     'site': string;
   }
   interface TdpCkanDataset {
@@ -59,7 +61,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface TdpCkanConnector {
-    'apiKey'?: string;
+    /**
+    * the url to the CKAN site
+    */
     'site'?: string;
   }
   interface TdpCkanDataset {

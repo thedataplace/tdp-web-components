@@ -4,7 +4,7 @@ export class TDPManager {
   private static _instance: TDPManager;
   private _client: CKAN;
 
-  private ready: Promise<any>;
+  private _ready: Promise<any>;
   private readyResolver: Function;
 
   private constructor() {
@@ -13,7 +13,7 @@ export class TDPManager {
 
   private reset() {
     this._client = null;
-    this.ready = new Promise(resolve => (this.readyResolver = resolve));
+    this._ready = new Promise(resolve => (this.readyResolver = resolve));
   }
 
   // Public
@@ -31,10 +31,14 @@ export class TDPManager {
     this._client = c;
     this.readyResolver();
 
-    return this._client
+    return this._client;
   }
 
   public async getClient() {
-    return this.ready.then(() => this._client);
+    return this._client;
+  }
+
+  public async ready() {
+    return this._ready;
   }
 }

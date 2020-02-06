@@ -28,16 +28,17 @@ export class TdpCkanListing {
   //
 
   componentDidLoad() {
-    TDPManager
-      .instance()
-      .getClient().then(client => {
-        this._client = client;
-        this.update();
-      });
+    this.init();
   }
 
   //  Internal
   //
+
+  private async init() {
+    await TDPManager.instance().ready();
+    this._client = await TDPManager.instance().getClient();
+    this.update();
+  }
 
   private async update() {
     const action = `${this.type}_list` as CKANAction;
@@ -85,8 +86,8 @@ export class TdpCkanListing {
           <ul class="list-none p-0">
             {
               this.items.map(item =>
-                <li class="cursor-pointer select-none">
-                  <div onClick={() => this.onItemClick(item)}>{item}</div>
+                <li class="cursor-pointer select-none rounded">
+                  <div class="p-2" onClick={() => this.onItemClick(item)}>{item}</div>
                 </li>
               )
             }

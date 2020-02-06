@@ -34,5 +34,7 @@
     "tailwindcss": "1.2.0"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "date-fns": "2.9.0"
+  }
 }

@@ -59,32 +59,42 @@ export class TdpCkanListing {
   // Rendering
   //
 
-  private defaultHeader() {
+  render() {
+    let header: string = '';
+
     switch (this.type) {
       case 'group':
-        return 'Groups';
+        header = 'Groups';
+        break;
       case 'organization':
-        return 'Organisations';
+        header = 'Organisations';
+        break;
       case 'package':
-        return 'Datasets';
+        header = 'Datasets';
+        break;
     }
-  }
 
-  render() {
     return (
-      <div>
-        <slot name="header">
-          <h1>{this.defaultHeader()}</h1>
-        </slot>
-        <ul>
-          {
-            this.items.map(item =>
-              <li>
-                <div onClick={() => this.onItemClick(item)}>{item}</div>
-              </li>
-            )
-          }
-        </ul>
+      <div class="container flex flex-col p-6 bg-white shadow-lg rounded-lg">
+        <section>
+          <slot name="header">
+            <h2 class="leading-tight">{header}</h2>
+          </slot>
+        </section>
+        <section>
+          <ul class="list-none p-0">
+            {
+              this.items.map(item =>
+                <li class="cursor-pointer select-none">
+                  <div onClick={() => this.onItemClick(item)}>{item}</div>
+                </li>
+              )
+            }
+          </ul>
+        </section>
+        <section>
+          <slot name="footer"></slot>
+        </section>
       </div>
     );
   }

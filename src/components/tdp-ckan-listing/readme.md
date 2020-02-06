@@ -1,4 +1,4 @@
-# my-component
+# tdp-ckan-listing
 
 
 
@@ -17,6 +17,17 @@
 | Event          | Description                                          | Type               |
 | -------------- | ---------------------------------------------------- | ------------------ |
 | `itemSelected` | Emitted when a user selects a new item from the list | `CustomEvent<any>` |
+
+
+## CSS Custom Properties
+
+| Name                                                | Description                                               |
+| --------------------------------------------------- | --------------------------------------------------------- |
+| `--tdp-ckan-listing__header--color`                 | The colour of the default listing header if slot not used |
+| `--tdp-ckan-listing__item--background-color`        | The background colour of a listing item                   |
+| `--tdp-ckan-listing__item--color`                   | The text colour of a listing item                         |
+| `--tdp-ckan-listing__item--hover--background-color` | The hover-state background colour of a listing item       |
+| `--tdp-ckan-listing__item--hover--color`            | The hover-state colour of a listing item                  |
 
 
 ----------------------------------------------

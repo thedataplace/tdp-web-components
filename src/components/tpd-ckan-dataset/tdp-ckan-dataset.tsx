@@ -47,39 +47,51 @@ export class TdpCkanDataset {
   //
 
   private title() {
+    const hasTitle = this.dataset && this.dataset.title;
+
     return (
-      <h1>{this.dataset ? this.dataset.title : 'Not defined'}</h1>
+      hasTitle
+        ? <section class="title"><h2>{this.dataset.title}</h2></section>
+        : undefined
     );
   }
 
   private author() {
+    const hasAuthor = this.dataset && this.dataset.author;
+
     return (
-      <p>Author: {this.dataset ? this.dataset.author : 'Not defined'}</p>
+      hasAuthor
+        ? <section class="author"><p>Author: {this.dataset.author}</p></section>
+        : undefined
     );
   }
 
   private resources() {
-    if (!(this.dataset && this.dataset.resources)) {
-      return undefined;
-    }
+    const hasResources = this.dataset && this.dataset.resources;
 
-    return [
-      <h2>Resources</h2>,
-      <ul>
-        {
-          this.dataset.resources.map(resource =>
-            <li><a href={resource.url} target="_blank">{resource.name}</a></li>
-          )
-        }
-      </ul>
-    ];
+    return hasResources
+      ? (
+        <section class="resources">
+          <h2 class="leading-tight">Resources</h2>
+          <ul class="list-none p-0">
+            {
+              this.dataset.resources.map(resource =>
+                <li><a href={resource.url} target="_blank" class="no-underline">{resource.name}</a></li>
+              )
+            }
+          </ul>
+        </section>
+      )
+      : undefined;
   }
 
   render() {
-    return [
-      this.title(),
-      this.author(),
-      this.resources()
-    ]
+    return (
+      <div class="container flex flex-col p-6 bg-white shadow-lg rounded-lg">
+        {this.title()}
+        {this.author()}
+        {this.resources()}
+      </div>
+    )
   }
 }

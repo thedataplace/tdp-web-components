@@ -16,8 +16,7 @@ const pcss = purgecss({
 const postCSSPlugins = [
   autoprefixer(),
   tailwindcss('./tailwind.config.js'),
-  pcss,
-  ...(process.env.NODE_ENV === 'production' ? [cssnano] : [])
+  ...(process.env.NODE_ENV === 'production' ? [pcss, cssnano] : [])
 ];
 // --
 

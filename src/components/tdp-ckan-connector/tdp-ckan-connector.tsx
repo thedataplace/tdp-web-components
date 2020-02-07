@@ -31,16 +31,18 @@ export class TdpCkanConnector {
   //
 
   private setClient() {
+    let message = 'ready!';
     if (!this.client) {
       this.client = new CKAN(this.site);
     } else {
       this.client.baseUrl = this.site;
+      message = 'updated!'
     }
 
     TDPManager
       .instance()
       .setClient(this.client)
-      .then(() => console.log('TdpCkanConnector -> client ready'))
+      .then(() => console.log(`TdpCkanConnector -> client ${message}`))
       .catch(error => console.error(error));
   }
 

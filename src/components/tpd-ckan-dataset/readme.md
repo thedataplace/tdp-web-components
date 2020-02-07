@@ -16,7 +16,10 @@
 
 | Name                                                           | Description                                                 |
 | -------------------------------------------------------------- | ----------------------------------------------------------- |
-| `--tdp-ckan-dataset__author--color`                            | The text colour of the author                               |
+| `--tdp-ckan-dataset__metadata--background-color`               | The background color of a metadata item                     |
+| `--tdp-ckan-dataset__metadata--color`                          | The text colour of a metadata item                          |
+| `--tdp-ckan-dataset__metadata--hover--background-color`        | The hover-state background-color of a metadata item         |
+| `--tdp-ckan-dataset__metadata--hover--color`                   | The hover-state color of a metadata item                    |
 | `--tdp-ckan-dataset__resources__header--color`                 | The header colour of the 'Resources' section                |
 | `--tdp-ckan-dataset__resources__item--background-color`        | The background color of a dataset resource item             |
 | `--tdp-ckan-dataset__resources__item--color`                   | The color of a dataset resource item                        |

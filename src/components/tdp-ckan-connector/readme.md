@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `apiKey` | `api-key` |             | `string` | `undefined` |
-| `site`   | `site`    |             | `string` | `undefined` |
+| Property | Attribute | Description              | Type     | Default     |
+| -------- | --------- | ------------------------ | -------- | ----------- |
+| `site`   | `site`    | the url to the CKAN site | `string` | `undefined` |
 
 
 ----------------------------------------------

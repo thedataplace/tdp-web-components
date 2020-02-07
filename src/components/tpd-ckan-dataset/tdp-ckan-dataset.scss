@@ -3,32 +3,32 @@
 
 /**
   * @prop --tdp-ckan-dataset__title--color: The colour of the default data header if slot not used
-  * @prop --tdp-ckan-dataset__author--color: The text colour of the author
   * @prop --tdp-ckan-dataset__resources__header--color: The header colour of the 'Resources' section
   * @prop --tdp-ckan-dataset__resources__item--color: The color of a dataset resource item
   * @prop --tdp-ckan-dataset__resources__item--background-color: The background color of a dataset resource item
   * @prop --tdp-ckan-dataset__resources__item--hover--color: The hover-state color of a dataset resource item
   * @prop --tdp-ckan-dataset__resources__item--hover--background-color: The hover-state background-color of a dataset resource item
+  * @prop --tdp-ckan-dataset__metadata--color: The text colour of a metadata item
+  * @prop --tdp-ckan-dataset__metadata--background-color: The background color of a metadata item
+  * @prop --tdp-ckan-dataset__metadata--hover--color: The hover-state color of a metadata item
+  * @prop --tdp-ckan-dataset__metadata--hover--background-color: The hover-state background-color of a metadata item
   */
 :host {
   --tdp-ckan-dataset__title--color: var(--tdp-primary);
-  --tdp-ckan-dataset__author--color: var(--tdp-black);
   --tdp-ckan-dataset__resources__header--color: var(--tdp-secondary);
-  --tdp-ckan-dataset__resources__item--color: var(--tdp-dark-grey);
+  --tdp-ckan-dataset__resources__item--color: var(--tdp-primary);
   --tdp-ckan-dataset__resources__item--background-color: var(--tdp-white);
   --tdp-ckan-dataset__resources__item--hover--color: var(--tdp-white);
-  --tdp-ckan-dataset__resources__item--hover--background-color: var(--tdp-light-grey);
+  --tdp-ckan-dataset__resources__item--hover--background-color: var(--tdp-primary);
+  --tdp-ckan-dataset__metadata--color: var(--tdp-primary);
+  --tdp-ckan-dataset__metadata--background-color: var(--tdp-white);
+  --tdp-ckan-dataset__metadata--hover--color: var(--tdp-white);
+  --tdp-ckan-dataset__metadata--hover--background-color: var(--tdp-primary);
 }
 
 .title {
   h2 {
     color: var(--tdp-ckan-dataset__title--color);
-  }
-}
-
-.author {
-  h2 {
-    color: var(--tdp-ckan-dataset__author--color);
   }
 }
 
@@ -39,6 +39,7 @@
 
   li {
     a {
+      box-decoration-break: clone;
       color: var(--tdp-ckan-dataset__resources__item--color);
       background-color: var(--tdp-ckan-dataset__resources__item--background-color);
     }
@@ -47,5 +48,28 @@
       color: var(--tdp-ckan-dataset__resources__item--hover--color);
       background-color: var(--tdp-ckan-dataset__resources__item--hover--background-color);
     }
+  }
+}
+
+.metadata {
+
+  span {
+    &.label {
+      color: var(--tdp-black);
+    }
+
+    &.value {
+      color: var(--tdp-grey);
+    }
+  }
+
+  a {
+    color: var(--tdp-ckan-dataset__metadata--color);
+    background-color: var(--tdp-ckan-dataset__metadata--background-color);
+  }
+
+  a:hover {
+    color: var(--tdp-ckan-dataset__metadata--hover--color);
+    background-color: var(--tdp-ckan-dataset__metadata--hover--background-color);
   }
 }

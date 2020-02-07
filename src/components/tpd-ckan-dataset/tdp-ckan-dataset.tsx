@@ -3,7 +3,7 @@ import { parseJSON, format } from 'date-fns';
 import { ICKANDataset } from '../../api/ckan.model';
 import { TDPManager } from '../../config/tdp';
 import { CKAN } from '../../api/ckan.service';
-
+import { isEmail } from '../../utils/regex';
 
 @Component({
   tag: 'tdp-ckan-dataset',
@@ -56,6 +56,18 @@ export class TdpCkanDataset {
     return format(parseJSON(date), 'yyyy MMM do');
   }
 
+  private formatEmail(value: string): string {
+    if (!isEmail(value)) {
+      return undefined;
+    }
+
+    if (value.indexOf('mailto:') > -1) {
+      return value;
+    }
+
+    return `mailto:${value}`;
+  }
+
   // Rendering
   //
 
@@ -89,7 +101,7 @@ export class TdpCkanDataset {
           <ul class="list-none p-0">
             {
               this.dataset.resources.map(resource =>
-                <li><a href={resource.url} target="_blank" class="no-underline">{resource.name}</a></li>
+                <li class="cursor-pointer select-none p-2"><a href={resource.url} target="_blank" class="no-underline p-2 rounded">{resource.name}</a></li>
               )
             }
           </ul>
@@ -110,24 +122,28 @@ export class TdpCkanDataset {
 
     if (hasAuthor && !hasAuthorEmail) {
       inner.push(
-        <p>{this.dataset.author}</p>
+        <span class="value">{this.dataset.author}</span>
       );
     } else if (hasAuthor && hasAuthorEmail) {
+      const email = this.formatEmail(this.dataset.author_email);
+
       inner.push(
-        <a href={this.dataset.author_email}>{this.dataset.author}</a>
+        <a href={email} target="_blank">{this.dataset.author}</a>
       );
     } else if (!hasAuthor && hasAuthorEmail) {
+      const email = this.formatEmail(this.dataset.author_email);
+
       inner.push(
-        <a href={this.dataset.author_email}>{this.dataset.author}</a>
+        <a href={email} target="_blank">{this.dataset.author_email}</a>
       );
     }
 
     return (
       <div class="table-row">
         <div class="table-cell">
-          <span>Author</span>
+          <span class="label">Author</span>
         </div>
-        <div class="table-cell">
+        <div class="table-cell pl-2">
           {inner}
         </div>
       </div>
@@ -146,24 +162,28 @@ export class TdpCkanDataset {
 
     if (hasMaintainer && !hasMaintainerEmail) {
       inner.push(
-        <p>{this.dataset.maintainer}</p>
+        <span class="value">{this.dataset.maintainer}</span>
       );
     } else if (hasMaintainer && hasMaintainerEmail) {
+      const email = this.formatEmail(this.dataset.maintainer_email);
+
       inner.push(
-        <a href={this.dataset.maintainer_email}>{this.dataset.maintainer}</a>
+        <a href={email} target="_blank">{this.dataset.maintainer}</a>
       );
     } else if (!hasMaintainer && hasMaintainerEmail) {
+      const email = this.formatEmail(this.dataset.maintainer_email);
+
       inner.push(
-        <a href={this.dataset.maintainer_email}>{this.dataset.maintainer}</a>
+        <a href={email} target="_blank">{this.dataset.maintainer_email}</a>
       );
     }
 
     return (
       <div class="table-row">
         <div class="table-cell">
-          <span>Maintainer</span>
+          <span class="label">Maintainer</span>
         </div>
-        <div class="table-cell">
+        <div class="table-cell pl-2">
           {inner}
         </div>
       </div>
@@ -184,10 +204,10 @@ export class TdpCkanDataset {
       ? (
         <div class="table-row">
           <div class="table-cell">
-            <span>Created</span>
+            <span class="label">Created</span>
           </div>
-          <div class="table-cell">
-            {this.formatDate(this.dataset.metadata_created)}
+          <div class="table-cell pl-2">
+            <span class="value">{this.formatDate(this.dataset.metadata_created)}</span>
           </div>
         </div>
       )
@@ -197,10 +217,10 @@ export class TdpCkanDataset {
       ? (
         <div class="table-row">
           <div class="table-cell">
-            <span>Last Modified</span>
+            <span class="label">Last Modified</span>
           </div>
-          <div class="table-cell">
-            {this.formatDate(this.dataset.metadata_modified)}
+          <div class="table-cell pl-2">
+            <span class="value">{this.formatDate(this.dataset.metadata_modified)}</span>
           </div>
         </div>
       )
@@ -218,20 +238,20 @@ export class TdpCkanDataset {
     }
 
     return (
-      <div class="container flex flex-wrap p-6 bg-white shadow-lg rounded-lg">
-        <div class="w-full sm:w-1/2">
+      <div class="container md:flex p-6 bg-white shadow-lg rounded-lg">
+        <div class="w-full md:w-1/2 md:m-3">
           {this.title()}
           {this.notes()}
         </div>
-        <div class="w-full sm:w-1/2">
+        <div class="w-full md:w-1/2 md:m-3">
           {this.resources()}
-          <div class="table-auto">
+          <div class="metadata table-auto border-solid border-1 border-gray-200 p-2">
             {this.author()}
             {this.maintainer()}
             {this.metadata()}
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }

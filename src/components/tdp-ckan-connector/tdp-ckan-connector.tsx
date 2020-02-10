@@ -1,14 +1,18 @@
-import { Component, h, Prop, Host, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Host, State, Watch } from '@stencil/core';
 import { CKAN } from '../../api/ckan.service';
 import { TDPManager } from '../../config/tdp';
+import { } from 'events';
 
 @Component({
   tag: 'tdp-ckan-connector'
 })
 export class TdpCkanConnector {
 
-  /** the url to the CKAN site */
+  /** The url to the CKAN site */
   @Prop() site: string;
+
+  /** Dispatched when a connection to a CKAN site is established */
+  @Event() ready: EventEmitter
 
   @State() client: CKAN;
 
@@ -30,20 +34,26 @@ export class TdpCkanConnector {
   // Internal
   //
 
-  private setClient() {
-    let message = 'ready!';
+  private async setClient() {
     if (!this.client) {
       this.client = new CKAN(this.site);
     } else {
       this.client.baseUrl = this.site;
-      message = 'updated!'
     }
 
-    TDPManager
-      .instance()
-      .setClient(this.client)
-      .then(() => console.log(`TdpCkanConnector -> client ${message}`))
-      .catch(error => console.error(error));
+    try {
+      await TDPManager.instance().setClient(this.client)
+
+      const c = await TDPManager.instance().getClient();
+      await c.ping();
+      this.ready.emit();
+
+      console.log(`TDPCkanConnector: connected to ${this.site}`);
+    } catch (error) {
+
+
+      console.error(`TDPCkanConnector: `, error);
+    }
   }
 
   // Rendering

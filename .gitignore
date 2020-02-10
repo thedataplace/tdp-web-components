@@ -27,3 +27,5 @@ UserInterfaceState.xcuserstate
 .env
 
 src/components.d.ts
+custom-elements.d.ts
+custom-elements.json

@@ -31,6 +31,10 @@ export const config: Config = {
       type: 'docs-readme'
     },
     {
+      type: 'docs-json',
+      file: './custom-elements.json'
+    },
+    {
       type: 'www',
       serviceWorker: null // disable service workers
     }
@@ -40,5 +44,5 @@ export const config: Config = {
     postcss({ plugins: postCSSPlugins })
   ],
   globalStyle: 'src/global/tdp.scss',
-  excludeSrc: ['/test/', '**/.spec.', '**/__mocks__/**/*.*', '**/.e2e.']
+  excludeSrc: ['/test/', '**/.spec.', '**/__mocks__/**/*.*', '**/.e2e.', 'src/components/**/*.stories.tsx']
 };

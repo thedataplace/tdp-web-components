@@ -12,7 +12,7 @@ export class CKAN {
   }
 
   public async ping() {
-    return this.request('site_read');
+    return this.action('site_read');
   }
 
   public set baseUrl(value: string) {

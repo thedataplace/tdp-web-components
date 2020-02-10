@@ -14,7 +14,7 @@ import {
 export namespace Components {
   interface TdpCkanConnector {
     /**
-    * the url to the CKAN site
+    * The url to the CKAN site
     */
     'site': string;
   }
@@ -62,7 +62,11 @@ declare global {
 declare namespace LocalJSX {
   interface TdpCkanConnector {
     /**
-    * the url to the CKAN site
+    * Dispatched when a connection to a CKAN site is established
+    */
+    'onReady'?: (event: CustomEvent<any>) => void;
+    /**
+    * The url to the CKAN site
     */
     'site'?: string;
   }

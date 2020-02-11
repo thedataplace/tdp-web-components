@@ -1,14 +1,39 @@
-import { html } from "lit-html";
+import { withKnobs, select, color } from '@storybook/addon-knobs';
+import { withActions } from '@storybook/addon-actions';
+import { html } from 'lit-html';
 import readme from './readme.md';
+
+const options = {
+  package: 'package',
+  organization: 'organization',
+  group: 'group'
+};
+
+const knobGroups = {
+  Properties: 'Properties',
+  Styling: 'Styling'
+}
 
 export default {
   title: 'TDP CKAN Listing',
   component: 'tdp-ckan-listing',
+  decorators: [withKnobs, withActions('itemSelected .listing')],
   parameters: {
-    notes: { readme }
+    notes: {
+      markdown: { readme },
+    }
   }
 };
 
 export const Default = () => html`
-  <tdp-ckan-listing></tdp-ckan-listing>
+  <style>
+  tdp-ckan-listing {
+    --tdp-ckan-listing__header--color: ${color('Header: colour', 'var(--tdp-primary)', knobGroups.Styling)};
+    --tdp-ckan-listing__item--background-color: ${color('Item: background colour', 'var(--tdp-white)', knobGroups.Styling)};
+    --tdp-ckan-listing__item--color: ${color('Item: text colour', 'var(--tdp-black)', knobGroups.Styling)};
+    --tdp-ckan-listing__item--hover--background-color: ${color('Item: hover background colour', 'var(--tdp-light-grey)', knobGroups.Styling)};
+    --tdp-ckan-listing__item--hover--color: ${color('Item: hover text colour', 'var(--tdp-white)', knobGroups.Styling)};
+  }
+  </style>
+  <tdp-ckan-listing class="listing" type="${select('type', options, options.package, knobGroups.Properties)}"></tdp-ckan-listing>
 `;

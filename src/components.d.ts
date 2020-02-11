@@ -14,6 +14,10 @@ import {
 export namespace Components {
   interface TdpCkanConnector {
     /**
+    * Render basic component connection state info
+    */
+    'debug': boolean;
+    /**
     * The url to the CKAN site
     */
     'site': string;
@@ -61,6 +65,10 @@ declare global {
 
 declare namespace LocalJSX {
   interface TdpCkanConnector {
+    /**
+    * Render basic component connection state info
+    */
+    'debug'?: boolean;
     /**
     * Dispatched when a connection to a CKAN site is established
     */

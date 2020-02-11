@@ -5,12 +5,14 @@
     "declaration": false,
     "experimentalDecorators": true,
     "lib": [
+      "es7",
       "dom",
       "es2017"
     ],
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
+    "noEmit": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
@@ -18,7 +20,8 @@
   },
   "include": [
     "src",
-    "types/jsx.d.ts"
+    "types/jsx.d.ts",
+    "src/global.d.ts"
   ],
   "exclude": [
     "node_modules"

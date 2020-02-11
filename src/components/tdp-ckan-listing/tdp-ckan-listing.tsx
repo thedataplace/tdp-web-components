@@ -1,4 +1,4 @@
-import { Component, h, State, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, h, State, Event, EventEmitter, Prop, Watch } from '@stencil/core';
 import { TDPManager } from '../../config/tdp';
 import { CKANAction } from '../../api/ckan.model';
 import { CKAN } from '../../api/ckan.service';
@@ -29,6 +29,14 @@ export class TdpCkanListing {
 
   componentDidLoad() {
     this.init();
+  }
+
+  // Watchers
+  //
+
+  @Watch('type')
+  onTypeChanged() {
+    this.update();
   }
 
   //  Internal

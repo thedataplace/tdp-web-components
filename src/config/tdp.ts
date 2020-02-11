@@ -1,5 +1,13 @@
 import { CKAN } from '../api/ckan.service';
 
+export function tdp(config: TDPManager, context: any) {
+  const base = {};
+
+  const ctx: any = context || window;
+
+  ctx.tdp = { ...base, ...config };
+}
+
 export class TDPManager {
   private static _instance: TDPManager;
   private _client: CKAN;

@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, h, Prop, Host, State, Watch } from '@stencil/core';
 import { CKAN } from '../../api/ckan.service';
 import { TDPManager } from '../../config/tdp';
-import { } from 'events';
+
 
 @Component({
   tag: 'tdp-ckan-connector'
@@ -10,6 +10,9 @@ export class TdpCkanConnector {
 
   /** The url to the CKAN site */
   @Prop() site: string;
+
+  /** Render basic component connection state info */
+  @Prop() debug: boolean = false;
 
   /** Dispatched when a connection to a CKAN site is established */
   @Event() ready: EventEmitter
@@ -50,8 +53,6 @@ export class TdpCkanConnector {
 
       console.log(`TDPCkanConnector: connected to ${this.site}`);
     } catch (error) {
-
-
       console.error(`TDPCkanConnector: `, error);
     }
   }
@@ -61,7 +62,14 @@ export class TdpCkanConnector {
 
   render() {
     return (
-      <Host></Host>
+      <Host>
+        {!this.debug
+          ? undefined
+          : <div class="container bg-white shadow-lg rounded-lg p-2">
+            <span>Api URL: {this.client.apiUrl}</span>
+          </div>
+        }
+      </Host>
     );
   }
 }

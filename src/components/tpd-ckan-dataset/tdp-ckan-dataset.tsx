@@ -31,17 +31,7 @@ export class TdpCkanDataset {
 
   @Watch('datasetId')
   protected async onDatasetIdChange() {
-    try {
-      const response = await this._client.action('package_show', { id: this.datasetId })
-      const result: ICKANDataset = response.result;
-
-      this.dataset = result;
-
-      console.log(this.dataset);
-    } catch (error) {
-      console.error(error);
-      this.datasetId = undefined;
-    }
+    this.update();
   }
 
   // Internal
@@ -50,6 +40,22 @@ export class TdpCkanDataset {
   private async init() {
     await TDPManager.instance().ready();
     this._client = await TDPManager.instance().getClient();
+
+    this.update();
+  }
+
+  private async update() {
+    const action = 'package_show';
+
+    try {
+      const response = await this._client.action(action, { id: this.datasetId })
+      const result: ICKANDataset = response.result;
+
+      this.dataset = result;
+    } catch (error) {
+      console.error(error);
+      this.datasetId = undefined;
+    }
   }
 
   private formatDate(date: string): string {

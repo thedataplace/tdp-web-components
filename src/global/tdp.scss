@@ -1,4 +1,16 @@
 @import './variables.scss';
+@import './utils.scss';
+
+@include generateFontCSS('rubik', '../assets/fonts/Rubik/Rubik-Regular');
+@include generateFontCSS('ibm-plex-serif', '../assets/fonts/IBM_Plex_Serif/IBMPlexSerif-Regular');
+
+.tdp--font-primary {
+  font-family: var(--tdp-font-primary);
+}
+
+.tdp--font-secondary {
+  font-family: var(--tdp-font-secondary);
+}
 
 @tailwind base;
 @tailwind components;

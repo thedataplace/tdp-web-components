@@ -20,7 +20,7 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "storybook": "start-storybook -p 6006 -s ./www",
+    "storybook": "stencil build --docs && start-storybook -p 6007 -s ./www",
     "build-storybook": "build-storybook -w -s ./www"
   },
   "devDependencies": {

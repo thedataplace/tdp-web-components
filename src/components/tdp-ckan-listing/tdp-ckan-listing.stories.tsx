@@ -2,6 +2,7 @@ import { withKnobs, select, color } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 import { html } from 'lit-html';
 import readme from './readme.md';
+import { knobGroups } from '../../stories/tdp.common';
 
 const options = {
   package: 'package',
@@ -9,13 +10,8 @@ const options = {
   group: 'group'
 };
 
-const knobGroups = {
-  Properties: 'Properties',
-  Styling: 'Styling'
-}
-
 export default {
-  title: 'TDP CKAN Listing',
+  title: 'TDP CKAN|Listing',
   component: 'tdp-ckan-listing',
   decorators: [withKnobs, withActions('itemSelected .listing')],
   parameters: {

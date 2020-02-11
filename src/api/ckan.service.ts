@@ -44,6 +44,8 @@ export class CKAN {
         status: -1,
         statusText: 'CKANError: no baseUrl set!'
       });
+
+      return;
     }
 
     const headers = new Headers();

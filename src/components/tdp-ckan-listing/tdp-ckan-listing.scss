@@ -17,10 +17,12 @@
 }
 
 h2 {
+  font-family: var(--tdp-font-primary);
   color: var(--tdp-ckan-listing__header--color);
 }
 
 li {
+  font-family: var(--tdp-font-secondary);
   background-color: var(--tdp-ckan-listing__item--background-color);
   color: var(--tdp-ckan-listing__item--color, --tdp-black);
 }

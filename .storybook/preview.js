@@ -6,6 +6,8 @@ import {
   setCustomElements,
 } from '@storybook/web-components';
 
+import '@storybook/addon-console';
+
 import customElements from '../custom-elements.json';
 
 // --
@@ -13,7 +15,8 @@ import customElements from '../custom-elements.json';
 setCustomElements(customElements);
 
 // force full reload to not reregister web components
-const req = require.context('../src/components/', true, /\.stories\.(tsx)$/);
+/*
+const req = require.context('../src/components/', true, /\.stories\.(js|jsx|ts|tsx|mdx)$/);
 configure(req, module);
 if (module.hot) {
   module.hot.accept(req.id, () => {
@@ -22,3 +25,4 @@ if (module.hot) {
     window.location.reload();
   });
 }
+*/

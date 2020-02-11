@@ -1,0 +1,11 @@
+@mixin generateFontCSS($fontName, $path) {
+  @font-face {
+    font-family: '#{$fontName}';
+    src: url('#{$path}.eot');
+    /* For IE6-8 */
+    src: url('#{$path}.woff2') format('woff2'),
+    url('#{$path}.woff') format('woff'),
+    url('#{$path}.ttf') format('truetype'),
+    url('#{$path}.svg') format('svg');
+  }
+}

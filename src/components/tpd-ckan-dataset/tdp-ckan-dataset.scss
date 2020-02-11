@@ -28,17 +28,20 @@
 
 .title {
   h2 {
+    font-family: var(--tdp-font-primary);
     color: var(--tdp-ckan-dataset__title--color);
   }
 }
 
 .resources {
   h2 {
+    font-family: var(--tdp-font-primary);
     color: var(--tdp-ckan-dataset__resources__header--color);
   }
 
   li {
     a {
+      font-family: var(--tdp-font-secondary);
       box-decoration-break: clone;
       color: var(--tdp-ckan-dataset__resources__item--color);
       background-color: var(--tdp-ckan-dataset__resources__item--background-color);

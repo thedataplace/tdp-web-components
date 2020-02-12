@@ -69,10 +69,10 @@ In your document's header, add the following:
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/@thedataplace/ckan-web-components@latest/dist/tdp-ckan-web-components/tdp-ckan-web-components.css" />
 ```
 
-Replacing the version number (in the example, `1.0.0`) with the desired version.
+Replacing the version number (in the example, `@latest`) with the desired version.
 
 ### In a stencil/angular/ionic app
 
-- Run `npm install @tdp/ckan-web-components --save`
-- Add an import to the npm packages `import @tdp/ckan-web-components;`
+- Run `npm install @thedataplace/ckan-web-components --save`
+- Add an import to the npm packages `import @thedataplace/ckan-web-components;`
 - Then you can use the element anywhere in your template, JSX, html etc

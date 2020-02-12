@@ -13,49 +13,35 @@
   * @prop --tdp-ckan-dataset__metadata--hover--color: The hover-state color of a metadata item
   * @prop --tdp-ckan-dataset__metadata--hover--background-color: The hover-state background-color of a metadata item
   */
-:host {
-  --tdp-ckan-dataset__title--color: var(--tdp-primary);
-  --tdp-ckan-dataset__resources__header--color: var(--tdp-secondary);
-  --tdp-ckan-dataset__resources__item--color: var(--tdp-primary);
-  --tdp-ckan-dataset__resources__item--background-color: var(--tdp-white);
-  --tdp-ckan-dataset__resources__item--hover--color: var(--tdp-white);
-  --tdp-ckan-dataset__resources__item--hover--background-color: var(--tdp-primary);
-  --tdp-ckan-dataset__metadata--color: var(--tdp-primary);
-  --tdp-ckan-dataset__metadata--background-color: var(--tdp-white);
-  --tdp-ckan-dataset__metadata--hover--color: var(--tdp-white);
-  --tdp-ckan-dataset__metadata--hover--background-color: var(--tdp-primary);
-}
-
 .title {
   h2 {
     font-family: var(--tdp-font-primary);
-    color: var(--tdp-ckan-dataset__title--color);
+    color: var(--tdp-ckan-dataset__title--color, var(--tdp-primary));
   }
 }
 
 .resources {
   h2 {
     font-family: var(--tdp-font-primary);
-    color: var(--tdp-ckan-dataset__resources__header--color);
+    color: var(--tdp-ckan-dataset__resources__header--color, var(--tdp-secondary));
   }
 
   li {
     a {
       font-family: var(--tdp-font-secondary);
       box-decoration-break: clone;
-      color: var(--tdp-ckan-dataset__resources__item--color);
-      background-color: var(--tdp-ckan-dataset__resources__item--background-color);
-    }
+      color: var(--tdp-ckan-dataset__resources__item--color, var(--tdp-primary));
+      background-color: var(--tdp-ckan-dataset__resources__item--background-color, var(--tdp-white));
 
-    a:hover {
-      color: var(--tdp-ckan-dataset__resources__item--hover--color);
-      background-color: var(--tdp-ckan-dataset__resources__item--hover--background-color);
+      &:hover {
+        color: var(--tdp-ckan-dataset__resources__item--hover--color, var(--tdp-white));
+        background-color: var(--tdp-ckan-dataset__resources__item--hover--background-color, var(--tdp-primary));
+      }
     }
   }
 }
 
 .metadata {
-
   span {
     &.label {
       color: var(--tdp-black);
@@ -67,12 +53,12 @@
   }
 
   a {
-    color: var(--tdp-ckan-dataset__metadata--color);
-    background-color: var(--tdp-ckan-dataset__metadata--background-color);
-  }
+    color: var(--tdp-ckan-dataset__metadata--color, var(--tdp-primary));
+    background-color: var(--tdp-ckan-dataset__metadata--background-color, var(--tdp-white));
 
-  a:hover {
-    color: var(--tdp-ckan-dataset__metadata--hover--color);
-    background-color: var(--tdp-ckan-dataset__metadata--hover--background-color);
+    &:hover {
+      color: var(--tdp-ckan-dataset__metadata--hover--color, var(--tdp-white));
+      background-color: var(--tdp-ckan-dataset__metadata--hover--background-color, var(--tdp-primary));
+    }
   }
 }

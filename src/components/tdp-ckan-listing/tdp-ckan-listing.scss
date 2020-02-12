@@ -8,26 +8,18 @@
   * @prop --tdp-ckan-listing__item--hover--color: The hover-state colour of a listing item
   * @prop --tdp-ckan-listing__item--hover--background-color: The hover-state background colour of a listing item
   */
-:host {
-  --tdp-ckan-listing__header--color: var(--tdp-primary);
-  --tdp-ckan-listing__item--background-color: var(--tdp-white);
-  --tdp-ckan-listing__item--color: var(--tdp-black);
-  --tdp-ckan-listing__item--hover--background-color: var(--tdp-light-grey);
-  --tdp-ckan-listing__item--hover--color: var(--tdp-white);
-}
-
 h2 {
   font-family: var(--tdp-font-primary);
-  color: var(--tdp-ckan-listing__header--color);
+  color: var(--tdp-ckan-listing__header--color, var(--tdp-primary));
 }
 
 li {
   font-family: var(--tdp-font-secondary);
-  background-color: var(--tdp-ckan-listing__item--background-color);
-  color: var(--tdp-ckan-listing__item--color, --tdp-black);
-}
+  background-color: var(--tdp-ckan-listing__item--background-color, var(--tdp-white));
+  color: var(--tdp-ckan-listing__item--color, var(--tdp-black));
 
-li:hover {
-  background-color: var(--tdp-ckan-listing__item--hover--background-color);
-  color: var(--tdp-ckan-listing__item--hover--color);
+  &:hover {
+    background-color: var(--tdp-ckan-listing__item--hover--background-color, var(--tdp-light-grey));
+    color: var(--tdp-ckan-listing__item--hover--color, var(--tdp-white));
+  }
 }

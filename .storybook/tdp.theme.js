@@ -5,7 +5,7 @@ export default create({
 
   brandTitle: 'The Data Place',
   brandUrl: 'https://thedata.place',
-  brandImage: 'assets/images/logo_tdp.png',
+  brandImage: './assets/images/logo_tdp.png',
 
   colorPrimary: '#1966b8', // --primary
   colorSecondary: '#19c0b8', // --active

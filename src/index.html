@@ -12,32 +12,7 @@
 </head>
 
 <body class="antialiased">
-  <!--
-  <tdp-ckan-connector site="https://plymouth.thedata.place">
-  </tdp-ckan-connector>
 
-  <div class="p-6">
-    <section>
-      <tdp-ckan-listing type="package"></tdp-ckan-listing>
-    </section>
-
-    <section>
-      <tdp-ckan-dataset></tdp-ckan-dataset>
-    </section>
-  </div>
--->
-
-  <script>
-    // NOTE: Very temporary! PoC!
-    const element = document.getElementsByTagName("tdp-ckan-dataset")[0];
-
-    document.addEventListener("itemSelected", event => {
-      console.log(event);
-      element.datasetId = event.detail;
-    });
-    // --
-
-  </script>
 </body>
 
 </html>

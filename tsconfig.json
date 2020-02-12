@@ -21,7 +21,8 @@
   "include": [
     "src",
     "types/jsx.d.ts",
-    "src/global.d.ts", "src/stories/tdp.common.ts"
+    "src/utils/global.d.ts",
+    "src/stories/tdp.common.ts"
   ],
   "exclude": [
     "node_modules"

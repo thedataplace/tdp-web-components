@@ -64,9 +64,9 @@ All components should be prefixed with the `tdp-ckan-*`.
 In your document's header, add the following:
 
 ```html
-<script type="module" src="https://unpkg.com/@tdp/ckan-web-components@1.0.0/dist/tdp-ckan-web-components/tdp-ckan-web-components.esm.js" crossorigin></script>
-<script nomodule src="https://unpkg.com/@tdp/ckan-web-components@1.0.0/dist/tdp-ckan-web-components/tdp-ckan-web-components.js"></script>
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@tdp/ckan-web-components@1.0.0/dist/tdp-ckan-web-components/tdp-ckan-web-components.css" />
+<script type="module" src="https://unpkg.com/@thedataplace/ckan-web-components@latest/dist/tdp-ckan-web-components/tdp-ckan-web-components.esm.js" crossorigin></script>
+<script nomodule src="https://unpkg.com/@thedataplace/ckan-web-components@latest/dist/tdp-ckan-web-components/tdp-ckan-web-components.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@thedataplace/ckan-web-components@latest/dist/tdp-ckan-web-components/tdp-ckan-web-components.css" />
 ```
 
 Replacing the version number (in the example, `1.0.0`) with the desired version.

@@ -1,5 +1,5 @@
 {
-  "name": "@tdp/ckan-web-components",
+  "name": "@thedataplace/ckan-web-components",
   "version": "0.0.1",
   "description": "The Data Place CKAN Web component library",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/tdp-web-components/tdp-web-components.js",
+  "unpkg": "dist/tdp-ckan-web-components/tdp-ckan-web-components.js",
   "files": [
     "dist/",
     "loader/"
